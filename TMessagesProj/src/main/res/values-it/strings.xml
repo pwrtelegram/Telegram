@@ -3,14 +3,14 @@
 <!--https://www.transifex.com/projects/p/telegram/language/it/members/-->
 
 <resources>
-    <string name="AppName">Telegram</string>
-    <string name="AppNameBeta">Telegram Beta</string>
+    <string name="AppName">PWRTelegram</string>
+    <string name="AppNameBeta">PWRTelegram Beta</string>
     <string name="LanguageName">Italiano</string>
     <string name="LanguageNameInEnglish">Italian</string>
     <string name="LanguageCode">it</string>
     <!--signin view-->
     <string name="YourPhone">Il tuo telefono</string>
-    <string name="StartText">Conferma il prefisso nazionale e inserisci il tuo numero di telefono.</string>
+    <string name="StartText">Inserisci il token del tuo bot.</string>
     <string name="ChooseCountry">Scegli una nazione</string>
     <string name="WrongCountry">Prefisso errato</string>
     <!--code enter view-->
@@ -1203,4 +1203,6 @@
     <string name="formatterDay24H">HH:mm</string>
     <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s alle %2$s</string>
+    <string name="YourToken">Il tuo bot token</string>
+    <string name="InvalidAccessToken">Token di accesso non valido</string>
 </resources>

@@ -3,14 +3,13 @@
 <!--Translation by Khalid Alaraifi-->
 
 <resources>
-    <string name="AppName">تيليجرام</string>
-    <string name="AppNameBeta">نسخة تيليجرام التجريبية</string>
+    <string name="AppName">PWRTelegram</string>
+    <string name="AppNameBeta">PWRTelegram Beta</string>
     <string name="LanguageName">العربية</string>
     <string name="LanguageNameInEnglish">Arabic</string>
     <string name="LanguageCode">ar</string>
     <!--signin view-->
     <string name="YourPhone">رقم هاتفك المحمول</string>
-    <string name="StartText">يرجى التحقق من صحة رمز بلدك وإدخال رقم هاتفك المحمول.</string>
     <string name="ChooseCountry">اختر دولة</string>
     <string name="WrongCountry">رمز البلد خاطئ</string>
     <!--code enter view-->
@@ -1203,4 +1202,7 @@
     <string name="formatterDay24H">HH:mm</string>
     <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s الساعة %2$s</string>
+    <string name="StartText">Please enter your bot token.</string>
+    <string name="InvalidAccessToken">You provided an invalid bot token.</string>
+    <string name="YourToken">Your bot access token</string>
 </resources>

@@ -16,6 +16,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
 import android.widget.Toast;
@@ -1593,8 +1594,9 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             return;
         }
         loadingBlockedUsers = true;
-        if (cache) {
-            MessagesStorage.getInstance().getBlockedUsers();
+        //if (cache) {
+        MessagesStorage.getInstance().getBlockedUsers();
+        /*
         } else {
             TLRPC.TL_contacts_getBlocked req = new TLRPC.TL_contacts_getBlocked();
             req.offset = 0;
@@ -1617,6 +1619,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 }
             });
         }
+        */
     }
 
     public void processLoadedBlockedUsers(final ArrayList<Integer> ids, final ArrayList<TLRPC.User> users, final boolean cache) {
@@ -2046,53 +2049,6 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         checkDeletingTask(false);
 
         if (UserConfig.isClientActivated()) {
-            if (ConnectionsManager.getInstance().getPauseTime() == 0 && ApplicationLoader.isScreenOn && !ApplicationLoader.mainInterfacePaused) {
-                if (statusSettingState != 1 && (lastStatusUpdateTime == 0 || Math.abs(System.currentTimeMillis() - lastStatusUpdateTime) >= 55000 || offlineSent)) {
-                    statusSettingState = 1;
-
-                    if (statusRequest != 0) {
-                        ConnectionsManager.getInstance().cancelRequest(statusRequest, true);
-                    }
-
-                    TLRPC.TL_account_updateStatus req = new TLRPC.TL_account_updateStatus();
-                    req.offline = false;
-                    statusRequest = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                        @Override
-                        public void run(TLObject response, TLRPC.TL_error error) {
-                            if (error == null) {
-                                lastStatusUpdateTime = System.currentTimeMillis();
-                                offlineSent = false;
-                                statusSettingState = 0;
-                            } else {
-                                if (lastStatusUpdateTime != 0) {
-                                    lastStatusUpdateTime += 5000;
-                                }
-                            }
-                            statusRequest = 0;
-                        }
-                    });
-                }
-            } else if (statusSettingState != 2 && !offlineSent && Math.abs(System.currentTimeMillis() - ConnectionsManager.getInstance().getPauseTime()) >= 2000) {
-                statusSettingState = 2;
-                if (statusRequest != 0) {
-                    ConnectionsManager.getInstance().cancelRequest(statusRequest, true);
-                }
-                TLRPC.TL_account_updateStatus req = new TLRPC.TL_account_updateStatus();
-                req.offline = true;
-                statusRequest = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                    @Override
-                    public void run(TLObject response, TLRPC.TL_error error) {
-                        if (error == null) {
-                            offlineSent = true;
-                        } else {
-                            if (lastStatusUpdateTime != 0) {
-                                lastStatusUpdateTime += 5000;
-                            }
-                        }
-                        statusRequest = 0;
-                    }
-                });
-            }
 
             if (!updatesQueueChannels.isEmpty()) {
                 ArrayList<Integer> keys = new ArrayList<>(updatesQueueChannels.keySet());
@@ -2697,9 +2653,9 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         loadingDialogs = true;
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
         FileLog.e("tmessages", "load cacheOffset = " + offset + " count = " + count + " cache = " + fromCache);
-        if (fromCache) {
-            MessagesStorage.getInstance().getDialogs(offset == 0 ? 0 : nextDialogsCacheOffset, count);
-        } else {
+        //if (fromCache) {
+        MessagesStorage.getInstance().getDialogs(offset == 0 ? 0 : nextDialogsCacheOffset, count);
+        /*} else {
             TLRPC.TL_messages_getDialogs req = new TLRPC.TL_messages_getDialogs();
             req.limit = count;
             boolean found = false;
@@ -2738,7 +2694,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                     }
                 }
             });
-        }
+        }*/
     }
 
     private void migrateDialogs(final int offset, final int offsetDate, final int offsetUser, final int offsetChat, final int offsetChannel, final long accessPeer) {

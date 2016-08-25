@@ -3,14 +3,13 @@
 <!--https://www.transifex.com/projects/p/telegram/language/ko/members/-->
 
 <resources>
-    <string name="AppName">텔레그램</string>
-    <string name="AppNameBeta">텔레그램 베타</string>
+    <string name="AppName">PWRTelegram</string>
+    <string name="AppNameBeta">PWRTelegram Beta</string>
     <string name="LanguageName">한국어</string>
     <string name="LanguageNameInEnglish">Korean</string>
     <string name="LanguageCode">ko</string>
     <!--signin view-->
     <string name="YourPhone">전화번호 입력</string>
-    <string name="StartText">국가번호와 전화번호를 입력하세요. (대한민국 국가번호: 82)</string>
     <string name="ChooseCountry">국가를 선택하세요</string>
     <string name="WrongCountry">올바른 국가번호를 입력하세요</string>
     <!--code enter view-->
@@ -1203,4 +1202,7 @@
     <string name="formatterDay24H">HH:mm</string>
     <string name="formatterDay12H">a h:mm</string>
     <string name="formatDateAtTime">%1$s %2$s</string>
+    <string name="StartText">Please enter your bot token.</string>
+    <string name="InvalidAccessToken">You provided an invalid bot token.</string>
+    <string name="YourToken">Your bot access token</string>
 </resources>

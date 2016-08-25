@@ -24,6 +24,10 @@ android {
         targetCompatibility JavaVersion.VERSION_1_7
     }
 
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
     signingConfigs {
         debug {
             storeFile file("config/release.keystore")
@@ -116,6 +120,7 @@ android {
         targetSdkVersion 23
         versionName "3.10.1"
     }
+
 }
 
 apply plugin: 'com.google.gms.google-services'

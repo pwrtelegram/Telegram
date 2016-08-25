@@ -3,14 +3,14 @@
 
 
 <resources>
-    <string name="AppName">Telegram</string>
-    <string name="AppNameBeta">Telegram Beta</string>
+    <string name="AppName">PWRTelegram</string>
+    <string name="AppNameBeta">PWRTelegram Beta</string>
     <string name="LanguageName">English</string>
     <string name="LanguageNameInEnglish">English</string>
     <string name="LanguageCode">en</string>
     <!--signin view-->
     <string name="YourPhone">Your phone</string>
-    <string name="StartText">Please confirm your country code and enter your phone number.</string>
+    <string name="StartText">Please enter your bot token.</string>
     <string name="ChooseCountry">Choose a country</string>
     <string name="WrongCountry">Wrong country code</string>
     <!--code enter view-->
@@ -1203,4 +1203,6 @@
     <string name="formatterDay24H">HH:mm</string>
     <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s at %2$s</string>
+    <string name="InvalidAccessToken">You provided an invalid bot token.</string>
+    <string name="YourToken">Your bot access token</string>
 </resources>

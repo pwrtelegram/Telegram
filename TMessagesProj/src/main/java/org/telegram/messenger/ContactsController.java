@@ -178,32 +178,6 @@ public class ContactsController {
     public void checkInviteText() {
         SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
         inviteText = preferences.getString("invitetext", null);
-        int time = preferences.getInt("invitetexttime", 0);
-        if (!updatingInviteText && (inviteText == null || time + 86400 < (int) (System.currentTimeMillis() / 1000))) {
-            updatingInviteText = true;
-            TLRPC.TL_help_getInviteText req = new TLRPC.TL_help_getInviteText();
-            ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
-                @Override
-                public void run(TLObject response, TLRPC.TL_error error) {
-                    if (response != null) {
-                        final TLRPC.TL_help_inviteText res = (TLRPC.TL_help_inviteText) response;
-                        if (res.message.length() != 0) {
-                            AndroidUtilities.runOnUIThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    updatingInviteText = false;
-                                    SharedPreferences preferences = ApplicationLoader.applicationContext.getSharedPreferences("mainconfig", Activity.MODE_PRIVATE);
-                                    SharedPreferences.Editor editor = preferences.edit();
-                                    editor.putString("invitetext", res.message);
-                                    editor.putInt("invitetexttime", (int) (System.currentTimeMillis() / 1000));
-                                    editor.commit();
-                                }
-                            });
-                        }
-                    }
-                }
-            }, ConnectionsManager.RequestFlagFailOnServerErrors);
-        }
     }
 
     public String getInviteText() {
@@ -902,10 +876,12 @@ public class ContactsController {
         synchronized (loadContactsSync) {
             loadingContacts = true;
         }
-        if (fromCache) {
-            FileLog.e("tmessages", "load contacts from cache");
-            MessagesStorage.getInstance().getContacts();
+//        if (fromCache) {
+        FileLog.e("tmessages", "load contacts from cache");
+        MessagesStorage.getInstance().getContacts();
+        /*
         } else {
+
             FileLog.e("tmessages", "load contacts from server");
             TLRPC.TL_contacts_getContacts req = new TLRPC.TL_contacts_getContacts();
             req.hash = cacheEmpty ? "" : UserConfig.contactsHash;
@@ -937,6 +913,7 @@ public class ContactsController {
                 }
             });
         }
+        */
     }
 
     public void processLoadedContacts(final ArrayList<TLRPC.TL_contact> contactsArr, final ArrayList<TLRPC.User> usersArr, final int from) {

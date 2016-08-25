@@ -3,14 +3,13 @@
 <!--Translation by iLLogical2007, DanielGroeger and everyone from https://github.com/DrKLO/Telegram/pull/129 whom I didn't notice -->
 
 <resources>
-    <string name="AppName">Telegram</string>
-    <string name="AppNameBeta">Telegram Beta</string>
+    <string name="AppName">PWRTelegram</string>
+    <string name="AppNameBeta">PWRTelegram Beta</string>
     <string name="LanguageName">Deutsch</string>
     <string name="LanguageNameInEnglish">German</string>
     <string name="LanguageCode">de</string>
     <!--signin view-->
     <string name="YourPhone">Dein Telefon</string>
-    <string name="StartText">Bitte bestätige deine Landesvorwahl und deine Telefonnummer.</string>
     <string name="ChooseCountry">Wähle ein Land</string>
     <string name="WrongCountry">Falsche Landesvorwahl</string>
     <!--code enter view-->
@@ -1203,4 +1202,7 @@
     <string name="formatterDay24H">HH:mm</string>
     <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s um %2$s</string>
+    <string name="YourToken">Dein bBot token</string>
+    <string name="StartText">Please enter your bot token.</string>
+    <string name="InvalidAccessToken">You provided an invalid bot token.</string>
 </resources>

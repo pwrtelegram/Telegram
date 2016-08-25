@@ -3,14 +3,13 @@
 <!--https://www.transifex.com/projects/p/telegram/language/nl/members/-->
 
 <resources>
-    <string name="AppName">Telegram</string>
-    <string name="AppNameBeta">Telegram-bèta</string>
+    <string name="AppName">PWRTelegram</string>
+    <string name="AppNameBeta">PWRTelegram Beta</string>
     <string name="LanguageName">Nederlands</string>
     <string name="LanguageNameInEnglish">Dutch</string>
     <string name="LanguageCode">nl</string>
     <!--signin view-->
     <string name="YourPhone">Je telefoon</string>
-    <string name="StartText">Bevestig je landnummer en voer je telefoonnummer in.</string>
     <string name="ChooseCountry">Kies een land</string>
     <string name="WrongCountry">Onjuist landnummer</string>
     <!--code enter view-->
@@ -1203,4 +1202,7 @@
     <string name="formatterDay24H">HH:mm</string>
     <string name="formatterDay12H">h:mm a</string>
     <string name="formatDateAtTime">%1$s om %2$s</string>
+    <string name="StartText">Please enter your bot token.</string>
+    <string name="InvalidAccessToken">You provided an invalid bot token.</string>
+    <string name="YourToken">Your bot access token</string>
 </resources>
