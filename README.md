@@ -1,32 +1,13 @@
-## Telegram messenger for Android
+## PWRTelegram messenger for Android
 
-[Telegram](https://telegram.org) is a messaging app with a focus on speed and security. It’s superfast, simple and free.
-This repo contains the official source code for [Telegram App for Android](https://play.google.com/store/apps/details?id=xyz.pwrtelegram.messenger).
+[PWRTelegram](https://pwrtelegram.xyz/pwrtelegram-app) is a messaging app with a focus on speed and security. It’s superfast, simple and free.
+This repo contains the official source code for the [PWRTelegram App for Android](https://play.google.com/store/apps/details?id=xyz.pwrtelegram.messenger).
 
-##Creating your Telegram Application
+Also do check out the [PWRTelegram bot API: a boosted version of telegram's bot API that can upload/download files up to 1.5 GB, supports anonymous downloads and much more!](https://pwrtelegram.xyz).  
 
-We welcome all developers to use our API and source code to create applications on our platform.
-There are several things we require from **all developers** for the moment.
+The PWRTelegram app is a fork of the official Telegram messenger app that can login as a bot.  
+You just need to provide the bot token and you will be able to receive all of the messages your bot receives or sends to its groups or users.  
+Once you login you won’t get a dialog list, but when a user sends you a message it will be received and the chat will be created.  
+This app is still in beta state, if you notice any bug report it to the [official PWRTelegram group](https://telegram.me/pwrtelegamgroup) by sending an accurate description of the problem with the logs (settings->send logs).  
 
-1. [**Obtain your own api_id**](https://core.telegram.org/api/obtaining_api_id) for your application.
-2. Please **do not** use the name Telegram for your app — or make sure your users understand that it is unofficial.
-3. Kindly **do not** use our standard logo (white paper plane in a blue circle) as your app's logo.
-3. Please study our [**security guidelines**](https://core.telegram.org/mtproto/security_guidelines) and take good care of your users' data and privacy.
-4. Please remember to publish **your** code too in order to comply with the licences.
-
-### API, Protocol documentation
-
-Telegram API manuals: https://core.telegram.org/api
-
-MTproto protocol manuals: https://core.telegram.org/mtproto
-
-### Usage
-
-**Beware of using the dev branch and uploading it to any markets, in many cases it not will work as expected**.
-
-First of all, take a look at **src/main/java/org/telegram/messenger/BuildVars.java** and fill it with correct values.
-Import the root folder into your IDE (tested on Android Studio), then run project.
-
-### Localization
-
-We moved all translations to https://www.transifex.com/projects/p/telegram/. Please use it.
+This app was modified by [Daniil Gentili](https://daniil.it).
