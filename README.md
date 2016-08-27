@@ -7,6 +7,7 @@ Also do check out the [PWRTelegram bot API: a boosted version of telegram's bot 
 
 The PWRTelegram app is a fork of the official Telegram messenger app that can login as a bot.  
 You just need to provide the bot token and you will be able to receive all of the messages your bot receives or sends to its groups or users.  
+The app will login to the MTProto API, just like normal telegram clients. This way you will still be able to receive updates from your bot.  
 Once you login you won’t get a dialog list, but when a user sends you a message it will be received and the chat will be created.  
 This app is still in beta state, if you notice any bug report it to the [official PWRTelegram group](https://telegram.me/pwrtelegamgroup) by sending an accurate description of the problem with the logs (settings->send logs).  
 
