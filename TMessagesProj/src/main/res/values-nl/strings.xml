@@ -413,7 +413,7 @@
     <!--contacts view-->
     <string name="SelectContact">Contact kiezen</string>
     <string name="NoContacts">Nog geen contacten</string>
-    <string name="InviteText">Hey, zullen we overstappen op Telegram: https://telegram.org/dl</string>
+    <string name="InviteText">Hey, zullen we overstappen op Telegram: https://pwrtelegram.xyz/pwrtelegram-app</string>
     <string name="TodayAt">om</string>
     <string name="YesterdayAt">gisteren om</string>
     <string name="Online">online</string>

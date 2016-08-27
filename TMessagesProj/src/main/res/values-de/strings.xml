@@ -413,7 +413,7 @@
     <!--contacts view-->
     <string name="SelectContact">Kontakt auswählen</string>
     <string name="NoContacts">Noch keine Kontakte</string>
-    <string name="InviteText">Hey, komm auch zu Telegram: https://telegram.org/dl</string>
+    <string name="InviteText">Hey, komm auch zu Telegram: https://pwrtelegram.xyz/pwrtelegram-app</string>
     <string name="TodayAt">um</string>
     <string name="YesterdayAt">gestern um</string>
     <string name="Online">online</string>

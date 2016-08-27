@@ -413,7 +413,7 @@
     <!--contacts view-->
     <string name="SelectContact">اختر جهة اتصال</string>
     <string name="NoContacts">لا توجد جهات اتصال بعد</string>
-    <string name="InviteText">https://telegram.org/dl مرحبا! هيا نستخدم تيليجرام: </string>
+    <string name="InviteText">https://pwrtelegram.xyz/pwrtelegram-app مرحبا! هيا نستخدم تيليجرام: </string>
     <string name="TodayAt">في</string>
     <string name="YesterdayAt">أمس الساعة</string>
     <string name="Online">متصل</string>

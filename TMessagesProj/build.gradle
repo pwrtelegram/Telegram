@@ -17,7 +17,7 @@ android {
     buildToolsVersion '23.0.3'
 
     useLibrary 'org.apache.http.legacy'
-    defaultConfig.applicationId = "org.telegram.messenger"
+    defaultConfig.applicationId = "xyz.pwrtelegram.messenger"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_7

@@ -7,4 +7,4 @@ local.properties
 *.keystore
 gradle.properties
 
-TMessagesProj/src/main/java/org/telegram/messenger/BuildVars.java
+TMessagesProj/src/main/java/xyz/pwrtelegram/messenger/BuildVars.java
