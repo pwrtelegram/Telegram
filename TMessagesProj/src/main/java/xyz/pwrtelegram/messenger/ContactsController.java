@@ -876,13 +876,13 @@ public class ContactsController {
         synchronized (loadContactsSync) {
             loadingContacts = true;
         }
-//        if (fromCache) {
-        FileLog.e("tmessages", "load contacts from cache");
-        MessagesStorage.getInstance().getContacts();
-        contactsLoaded = true;
-        /*
+        if (fromCache) {
+            FileLog.e("tmessages", "load contacts from cache");
+            MessagesStorage.getInstance().getContacts();
+            contactsLoaded = true;
+            loadingContacts = false;
         } else {
-
+            return;/*
             FileLog.e("tmessages", "load contacts from server");
             TLRPC.TL_contacts_getContacts req = new TLRPC.TL_contacts_getContacts();
             req.hash = cacheEmpty ? "" : UserConfig.contactsHash;
@@ -913,8 +913,10 @@ public class ContactsController {
                     }
                 }
             });
+
+            */
         }
-        */
+
     }
 
     public void processLoadedContacts(final ArrayList<TLRPC.TL_contact> contactsArr, final ArrayList<TLRPC.User> usersArr, final int from) {

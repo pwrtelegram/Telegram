@@ -2657,9 +2657,11 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         loadingDialogs = true;
         NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
         FileLog.e("tmessages", "load cacheOffset = " + offset + " count = " + count + " cache = " + fromCache);
-        //if (fromCache) {
-        MessagesStorage.getInstance().getDialogs(offset == 0 ? 0 : nextDialogsCacheOffset, count);
-        /*} else {
+        if (fromCache) {
+            MessagesStorage.getInstance().getDialogs(offset == 0 ? 0 : nextDialogsCacheOffset, count);
+            loadingDialogs = false;
+        } else {
+            /*
             TLRPC.TL_messages_getDialogs req = new TLRPC.TL_messages_getDialogs();
             req.limit = count;
             boolean found = false;
@@ -2697,8 +2699,8 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                         processLoadedDialogs(dialogsRes, null, 0, count, 0, false, false);
                     }
                 }
-            });
-        }*/
+            });*/
+        }
     }
 
     private void migrateDialogs(final int offset, final int offsetDate, final int offsetUser, final int offsetChat, final int offsetChannel, final long accessPeer) {

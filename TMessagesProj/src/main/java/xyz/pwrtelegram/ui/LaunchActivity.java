@@ -1150,7 +1150,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                 }
             });
         } else if (group != null) {
-            if (state == 0) {
+/*            if (state == 0) {
                 final TLRPC.TL_messages_checkChatInvite req = new TLRPC.TL_messages_checkChatInvite();
                 req.hash = group;
                 requestId = ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
@@ -1212,7 +1212,7 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         });
                     }
                 }, ConnectionsManager.RequestFlagFailOnServerErrors);
-            } else if (state == 1) {
+            } else if (state == 1) {*/
                 TLRPC.TL_messages_importChatInvite req = new TLRPC.TL_messages_importChatInvite();
                 req.hash = group;
                 ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
@@ -1267,7 +1267,6 @@ public class LaunchActivity extends Activity implements ActionBarLayout.ActionBa
                         });
                     }
                 }, ConnectionsManager.RequestFlagFailOnServerErrors);
-            }
         } else if (sticker != null) {
             if (!mainFragmentsStack.isEmpty()) {
                 TLRPC.TL_inputStickerSetShortName stickerset = new TLRPC.TL_inputStickerSetShortName();
