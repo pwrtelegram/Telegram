@@ -38,6 +38,7 @@ import xyz.pwrtelegram.ui.ChatActivity;
 import xyz.pwrtelegram.ui.Components.AlertsCreator;
 import xyz.pwrtelegram.ui.ProfileActivity;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -866,7 +867,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         if (dialogs.isEmpty()) {
             return;
         }
-        /*
+
         TLRPC.TL_messages_getPeerDialogs req = new TLRPC.TL_messages_getPeerDialogs();
         if (dialogs != null) {
             for (int a = 0; a < dialogs.size(); a++) {
@@ -943,7 +944,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 }
             }
         });
-        */
+
     }
 
     public void loadFullChat(final int chat_id, final int classGuid, boolean force) {
@@ -1598,10 +1599,11 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             return;
         }
         loadingBlockedUsers = true;
-        //if (cache) {
-        MessagesStorage.getInstance().getBlockedUsers();
-        /*
+        if (cache) {
+            MessagesStorage.getInstance().getBlockedUsers();
         } else {
+            NotificationCenter.getInstance().postNotificationName(NotificationCenter.blockedUsersDidLoaded);
+/*
             TLRPC.TL_contacts_getBlocked req = new TLRPC.TL_contacts_getBlocked();
             req.offset = 0;
             req.limit = 200;
@@ -1621,9 +1623,9 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                     }
                     processLoadedBlockedUsers(blocked, users, false);
                 }
-            });
+            });*/
         }
-        */
+
     }
 
     public void processLoadedBlockedUsers(final ArrayList<Integer> ids, final ArrayList<TLRPC.User> users, final boolean cache) {
@@ -2408,9 +2410,9 @@ public class MessagesController implements NotificationCenter.NotificationCenter
     public void loadMessages(final long dialog_id, final int count, final int max_id, boolean fromCache, int midDate, final int classGuid, final int load_type, final int last_message_id, final boolean isChannel, final int loadIndex, final int first_unread, final int unread_count, final int last_date, final boolean queryFromServer) {
         FileLog.e("tmessages", "load messages in chat " + dialog_id + " count " + count + " max_id " + max_id + " cache " + fromCache + " mindate = " + midDate + " guid " + classGuid + " load_type " + load_type + " last_message_id " + last_message_id + " index " + loadIndex + " firstUnread " + first_unread + " underad count " + unread_count + " last_date " + last_date + " queryFromServer " + queryFromServer);
         int lower_part = (int) dialog_id;
-//        if (fromCache || lower_part == 0) {
+        if (fromCache || lower_part == 0) {
             MessagesStorage.getInstance().getMessages(dialog_id, count, max_id, midDate, classGuid, load_type, isChannel, loadIndex);
-/*        } else {
+        } else {
             TLRPC.TL_messages_getHistory req = new TLRPC.TL_messages_getHistory();
             req.peer = getInputPeer(lower_part);
             if (load_type == 3) {
@@ -2443,7 +2445,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 }
             });
             ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);
-        }*/
+        }
     }
 
     public void reloadWebPages(final long dialog_id, HashMap<String, ArrayList<MessageObject>> webpagesToReload) {
@@ -2661,6 +2663,8 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             MessagesStorage.getInstance().getDialogs(offset == 0 ? 0 : nextDialogsCacheOffset, count);
             loadingDialogs = false;
         } else {
+
+            loadingDialogs = false;
             /*
             TLRPC.TL_messages_getDialogs req = new TLRPC.TL_messages_getDialogs();
             req.limit = count;
@@ -2707,8 +2711,9 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         if (migratingDialogs || offset == -1) {
             return;
         }
-        migratingDialogs = true;
-
+        migratingDialogs = false;
+        return;
+        /*
         TLRPC.TL_messages_getDialogs req = new TLRPC.TL_messages_getDialogs();
         req.limit = 100;
         req.offset_id = offset;
@@ -2866,6 +2871,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 }
             }
         });
+        */
     }
 
     public void processLoadedDialogs(final TLRPC.messages_Dialogs dialogsRes, final ArrayList<TLRPC.EncryptedChat> encChats, final int offset, final int count, final int loadType, final boolean resetEnd, final boolean migrate) {
@@ -2882,8 +2888,8 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                             if (resetEnd) {
                                 dialogsEndReached = false;
                             }
-                            NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
-                            loadDialogs(0, count, false);
+                            //NotificationCenter.getInstance().postNotificationName(NotificationCenter.dialogsNeedReload);
+                            //loadDialogs(0, count, false);
                         }
                     });
                     return;
@@ -3128,9 +3134,10 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                             NotificationCenter.getInstance().postNotificationName(NotificationCenter.needReloadRecentDialogsSearch);
                         } else {
                             generateUpdateMessage();
+                            /*
                             if (!added && loadType == 1) {
                                 loadDialogs(0, count, false);
-                            }
+                            }*/
                         }
                         migrateDialogs(UserConfig.migrateOffsetId, UserConfig.migrateOffsetDate, UserConfig.migrateOffsetUserId, UserConfig.migrateOffsetChatId, UserConfig.migrateOffsetChannelId, UserConfig.migrateOffsetAccess);
                         if (!dialogsToReload.isEmpty()) {
@@ -3249,6 +3256,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         if (lower_id == 0 || checkingLastMessagesDialogs.containsKey(lower_id)) {
             return;
         }
+        checkingLastMessagesDialogs.remove(lower_id);
         /*
         TLRPC.TL_messages_getHistory req = new TLRPC.TL_messages_getHistory();
         req.peer = peer == null ? getInputPeer(lower_id) : peer;
@@ -3575,7 +3583,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             if (max_positive_id == 0 || high_id == 1) {
                 return;
             }
-            /*
+
             TLRPC.InputPeer inputPeer = getInputPeer(lower_part);
             TLObject req;
             long messageId = max_positive_id;
@@ -3638,7 +3646,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                     }
                 });
             }
-            */
+
         } else {
             if (max_date == 0) {
                 return;
@@ -4423,6 +4431,8 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         if (UserConfig.registeredForPush && regid.equals(UserConfig.pushString)) {
             return;
         }
+
+        registeringForPush = false;
         /*
         registeringForPush = true;
         TLRPC.TL_account_registerDevice req = new TLRPC.TL_account_registerDevice();

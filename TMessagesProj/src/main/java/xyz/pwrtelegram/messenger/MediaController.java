@@ -3046,10 +3046,10 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
 
     public void checkSaveToGalleryFiles() {
         try {
-            File telegramPath = new File(Environment.getExternalStorageDirectory(), "Telegram");
-            File imagePath = new File(telegramPath, "Telegram Images");
+            File telegramPath = new File(Environment.getExternalStorageDirectory(), "PWRTelegram");
+            File imagePath = new File(telegramPath, "PWRTelegram Images");
             imagePath.mkdir();
-            File videoPath = new File(telegramPath, "Telegram Video");
+            File videoPath = new File(telegramPath, "PWRTelegram Video");
             videoPath.mkdir();
 
             if (saveToGallery) {
