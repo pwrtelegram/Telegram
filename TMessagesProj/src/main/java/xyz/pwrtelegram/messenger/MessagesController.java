@@ -867,7 +867,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         if (dialogs.isEmpty()) {
             return;
         }
-
+        /*
         TLRPC.TL_messages_getPeerDialogs req = new TLRPC.TL_messages_getPeerDialogs();
         if (dialogs != null) {
             for (int a = 0; a < dialogs.size(); a++) {
@@ -944,6 +944,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 }
             }
         });
+        */
 
     }
 
@@ -2413,6 +2414,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
         if (fromCache || lower_part == 0) {
             MessagesStorage.getInstance().getMessages(dialog_id, count, max_id, midDate, classGuid, load_type, isChannel, loadIndex);
         } else {
+            /*
             TLRPC.TL_messages_getHistory req = new TLRPC.TL_messages_getHistory();
             req.peer = getInputPeer(lower_part);
             if (load_type == 3) {
@@ -2445,6 +2447,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                 }
             });
             ConnectionsManager.getInstance().bindRequestToGuid(reqId, classGuid);
+            */
         }
     }
 
@@ -2663,7 +2666,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             MessagesStorage.getInstance().getDialogs(offset == 0 ? 0 : nextDialogsCacheOffset, count);
             loadingDialogs = false;
         } else {
-
+            FileLog.e("tmessages", "Abort loading");
             loadingDialogs = false;
             /*
             TLRPC.TL_messages_getDialogs req = new TLRPC.TL_messages_getDialogs();
@@ -3143,6 +3146,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                         if (!dialogsToReload.isEmpty()) {
                             reloadDialogsReadValue(dialogsToReload, 0);
                         }
+
                     }
                 });
             }
@@ -3634,6 +3638,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
             });
 
             if (max_positive_id != Integer.MAX_VALUE) {
+                /*
                 ConnectionsManager.getInstance().sendRequest(req, new RequestDelegate() {
                     @Override
                     public void run(TLObject response, TLRPC.TL_error error) {
@@ -3645,6 +3650,7 @@ public class MessagesController implements NotificationCenter.NotificationCenter
                         }
                     }
                 });
+                */
             }
 
         } else {
