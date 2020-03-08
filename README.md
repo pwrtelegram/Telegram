@@ -1,5 +1,9 @@
 ## PWRTelegram messenger for Android
 
+**Not maintained anymore** - Check the new PWRTelegram app fork based on Telegram-FOSS: https://github.com/andrew-ld/PWRTelegram
+
+---
+
 [PWRTelegram](https://play.google.com/store/apps/details?id=xyz.pwrtelegram.messenger) is a fork of the official Telegram messenger app that can login as a bot.  
 This repo contains the official source code for the [PWRTelegram App for Android](https://play.google.com/store/apps/details?id=xyz.pwrtelegram.messenger).
 
